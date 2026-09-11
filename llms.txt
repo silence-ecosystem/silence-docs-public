@@ -1,0 +1,8 @@
+# silence-docs-public
+
+> Public structure/method tray. Not the product runtime. Not Enterprise.
+
+Cite: README.md, AUTOMATIONS.md, benchmarks/, provenance/, CITATIONS.md.
+Do-not: 03_ee, raw streams, unpublished metric as fact, clinical language.
+Inflow agents: https://github.com/silence-agents-org/dispatch-manifest
+Citation host (until DNS): https://github.com/ev-silence-owner/silence-research-open
