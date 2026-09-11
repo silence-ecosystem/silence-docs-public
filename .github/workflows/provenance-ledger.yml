@@ -1,0 +1,35 @@
+name: provenance-ledger
+on:
+  schedule:
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  ledger:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: hash published files
+        run: |
+          python3 - << 'PY'
+          import hashlib, json, os, datetime
+          rec=[]
+          for root, dirs, files in os.walk('.'):
+            dirs[:] = [d for d in dirs if d not in {'.git','node_modules'}]
+            for f in files:
+              if f.endswith(('.md','.json','.txt')):
+                p=os.path.join(root,f)
+                h=hashlib.sha256(open(p,'rb').read()).hexdigest()
+                rec.append({'path':p,'sha256':h,'purpose':'PUBLIC_MIT','signer':'ci:silence-docs-public'})
+          doc={'generated':datetime.datetime.utcnow().isoformat()+'Z','records':rec}
+          os.makedirs('provenance', exist_ok=True)
+          day=datetime.date.today().isoformat()
+          open(f'provenance/LEDGER-{day}.json','w').write(json.dumps(doc, indent=2))
+          PY
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'S11: provenance ledger (structure only)'

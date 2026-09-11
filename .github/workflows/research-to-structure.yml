@@ -1,0 +1,13 @@
+name: research-to-structure
+on:
+  workflow_dispatch:
+  push:
+    tags: ['research/publish-*']
+jobs:
+  halted:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo 'HALTED: OD-1A/OD-1B git history determination not closed.'
+          echo 'This job must never copy raw from silence-reports.'
+          exit 78

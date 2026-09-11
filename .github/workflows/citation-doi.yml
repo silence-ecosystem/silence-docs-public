@@ -1,0 +1,11 @@
+name: citation-doi
+on:
+  workflow_dispatch:
+jobs:
+  halted:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo 'HALTED: DataCite/Crossref institutional account unconfirmed.'
+          echo 'No DOI on raw. No silent mint.'
+          exit 78

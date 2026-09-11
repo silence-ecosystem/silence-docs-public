@@ -1,0 +1,28 @@
+name: community-triage
+on:
+  issues:
+    types: [opened, edited]
+  pull_request:
+    types: [opened, edited, synchronize]
+permissions:
+  issues: write
+  pull-requests: write
+  contents: read
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: S11 + synth-data labels
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.issue?.body || context.payload.pull_request?.body || '';
+            const s11 = /\b(diagnos(?:e|is|tic)|therap(?:y|eutic)|anxiety|depression|PTSD|cure)\b/i.test(body);
+            const pii = /\b(\d{3}-\d{2}-\d{4}|cohort[_-]?id\s*[:=])/i.test(body);
+            const labels = [];
+            if (s11) labels.push('s11-violation');
+            if (pii) labels.push('needs-synth-data');
+            if (!labels.length) return;
+            const issue_number = context.payload.issue?.number || context.payload.pull_request?.number;
+            await github.rest.issues.addLabels({ owner: context.repo.owner, repo: context.repo.repo, issue_number, labels });
