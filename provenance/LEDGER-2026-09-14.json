@@ -1,0 +1,29 @@
+{
+  "generated": "2026-09-14T15:48:10.085425Z",
+  "records": [
+    {
+      "path": "./AUTOMATIONS.md",
+      "sha256": "4e204e97dacd1db1f463d946ef6d909958b95ea1da775b4aa8556b452e3f38cc",
+      "purpose": "PUBLIC_MIT",
+      "signer": "ci:silence-docs-public"
+    },
+    {
+      "path": "./CITATIONS.md",
+      "sha256": "c39c09c6f7318c2d5c4b5ce4949223c7653a8ca6d39ab94d57fde28cbf5c74b7",
+      "purpose": "PUBLIC_MIT",
+      "signer": "ci:silence-docs-public"
+    },
+    {
+      "path": "./llms.txt",
+      "sha256": "f3219fe35f7dcdbcdf8f5a667543ef0a8bc394ef1fac7e114bd821bc4fce4454",
+      "purpose": "PUBLIC_MIT",
+      "signer": "ci:silence-docs-public"
+    },
+    {
+      "path": "./README.md",
+      "sha256": "a768993e62e810fccc422775399bf7c7887996b7ecc92c3736600d1b9794fe88",
+      "purpose": "PUBLIC_MIT",
+      "signer": "ci:silence-docs-public"
+    }
+  ]
+}
