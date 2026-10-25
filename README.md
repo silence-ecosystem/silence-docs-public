@@ -9,3 +9,7 @@ Source of CI: private `silence-ecosystem/silence-core` (04_packages / 05_apps on
 Agent inflow is a different org: [silence-agents-org](https://github.com/silence-agents-org) — do not mix community triage with agent inbox-raw.
 
 Disclaimer: *Non-clinical behavioral protocol. No diagnosis. No therapy.*
+
+## License
+
+Apache-2.0. See [LICENSE](LICENSE) and [NOTICE](NOTICE).
